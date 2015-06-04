@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lesson_number: 1
+  class_id: 
+  offer_id: 
+  description: MyText
+
+two:
+  lesson_number: 1
+  class_id: 
+  offer_id: 
+  description: MyText
