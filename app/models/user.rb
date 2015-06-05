@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :roles, through: :assignments
+  has_many :tasks, through: :chores
+  has_many :chores
+  has_many :assignments
 end

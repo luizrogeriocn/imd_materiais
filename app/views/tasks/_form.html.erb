@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= f.label :tilte %><br>
-    <%= f.text_field :tilte %>
+    <%= f.text_field :tilte %><br>
+    <%= f.fields_for :chores do |ff| %>
+      <%= ff.label :user_id %><br>
+      <%= ff.text_field :user_id %><br>
+    <%end%>
   </div>
   <div class="field">
     <%= f.label :description %><br>
