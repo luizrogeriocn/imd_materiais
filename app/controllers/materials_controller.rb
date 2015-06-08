@@ -1,5 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :set_material, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /materials
   # GET /materials.json
@@ -14,11 +15,16 @@ class MaterialsController < ApplicationController
 
   # GET /materials/new
   def new
+    @lessons = current_user.lessons
+    @subjects = Subject.all
     @material = Material.new
   end
 
   # GET /materials/1/edit
   def edit
+    @lessons = current_user.lessons
+    @subjects = Subject.all
+    @material = Material.new
   end
 
   # POST /materials
@@ -69,6 +75,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:lesson_id, :description)
+      params.require(:material).permit(:lesson_id, :description, :file)
     end
 end

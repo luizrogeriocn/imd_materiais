@@ -13,8 +13,17 @@
 
   <div class="field">
     <%= f.label :lesson_id %><br>
-    <%= f.text_field :lesson_id %>
+      <%= f.grouped_collection_select :lesson_id,
+        @subjects, :lessons, :title,
+        :id, :lesson_number
+      %>
   </div>
+  
+  <div class="field">
+    <%= f.label :file %>
+    <%= f.file_field :file %>
+  </div>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>

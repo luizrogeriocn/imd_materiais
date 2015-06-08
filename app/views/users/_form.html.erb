@@ -12,9 +12,28 @@
   <% end %>
 
   <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %><br>
+      
+      <div id="assignments">  
+        <%= f.fields_for :assignments do |assignment| %>
+          <%= render 'assignment_fields', :f => assignment %>
+        <%end%>
+        <%= link_to_add_association 'add assignment', f, :assignments %>
+      </div>
+
+    </div>
+
+  <div class="field">
     <%= f.label :nickname %><br>
     <%= f.text_field :nickname %>
   </div>
+
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

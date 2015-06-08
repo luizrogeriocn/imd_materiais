@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604220834) do
+ActiveRecord::Schema.define(version: 20150608215939) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
@@ -54,21 +54,22 @@ ActiveRecord::Schema.define(version: 20150604220834) do
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "lesson_number"
-    t.integer  "class_id"
+    t.integer  "subject_id"
     t.integer  "offer_id"
     t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
-  add_index "lessons", ["class_id"], name: "index_lessons_on_class_id"
   add_index "lessons", ["offer_id"], name: "index_lessons_on_offer_id"
+  add_index "lessons", ["subject_id"], name: "index_lessons_on_subject_id"
 
   create_table "materials", force: :cascade do |t|
     t.integer  "lesson_id"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "file"
   end
 
   add_index "materials", ["lesson_id"], name: "index_materials_on_lesson_id"
@@ -95,8 +96,9 @@ ActiveRecord::Schema.define(version: 20150604220834) do
   create_table "tasks", force: :cascade do |t|
     t.string   "tilte"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0
   end
 
   create_table "users", force: :cascade do |t|

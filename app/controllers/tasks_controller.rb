@@ -1,10 +1,15 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if current_user.roles.first.title.eql? "Coordinator"
+      @tasks = Task.all
+    else
+      @tasks = current_user.tasks
+    end
   end
 
   # GET /tasks/1
@@ -71,7 +76,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:tilte, :description, 
-        :chores_attributes => [:user_id, :task_id])
+      params.require(:task).permit(:tilte, :description,
+        :chores_attributes => [:id, :user_id, :task_id, :_destroy])
     end
 end
