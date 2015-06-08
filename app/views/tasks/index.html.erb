@@ -8,13 +8,18 @@
       <th>Tilte</th>
       <th>Description</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <% if task.done? %>
+        <tr class="list-group-item-success">
+      <% else %>
+        <tr class="list-group-item-danger">
+      <% end %>
+
         <td><%= task.tilte %></td>
         <td><%= task.description %></td>
         <td><%= task.status %></td>
