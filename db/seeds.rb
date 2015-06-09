@@ -17,3 +17,14 @@ Role.create(title: "Teacher")
 Assignment.create(user_id: 1, role_id: 1)
 Assignment.create(user_id: 2, role_id: 2)
 Assignment.create(user_id: 3, role_id: 2)
+
+Subject.create(title: "Banco de Dados")
+Subject.create(title: "Logica")
+Subject.create(title: "Redacao")
+
+Offer.create(year: 2015, semester: 1)
+Offer.create(year: 2015, semester: 2)
+
+Lesson.create(lesson_number: 1, subject_id: 1, offer_id: 1, description: "Aula 1 de Banco de Dados")
+Lesson.create(lesson_number: 1, subject_id: 2, offer_id: 2, description: "Aula 1 de Logica")
+Lesson.create(lesson_number: 1, subject_id: 3, offer_id: 1, description: "Aula 1 de Redacao")
