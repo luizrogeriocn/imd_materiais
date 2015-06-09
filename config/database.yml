@@ -1,15 +1,5 @@
 development:
   adapter: postgresql
-  encoding: unicode
-  database: d192mpoqnss436
-  pool: 5
-  username: ofnhfybjeycyoz
-  password: bETjWR80BGJInWf2zpJGO12lRE
-
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: d192mpoqnss436
-  pool: 5
-  username: ofnhfybjeycyoz
-  password: bETjWR80BGJInWf2zpJGO12lRE
+  host: localhost
+  username: user
+  database: app-dev
