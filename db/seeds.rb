@@ -6,10 +6,10 @@ Task.create(tilte: "Task1", description: "Task para prof 1", status: 0)
 Task.create(tilte: "Task2", description: "Task para prof 2", status: 0)
 Task.create(tilte: "Task3", description: "Task para prof 1 e 2", status: 0)
 
-Chore.create(user_id: 1, task_id: 1)
-Chore.create(user_id: 2, task_id: 2)
-Chore.create(user_id: 1, task_id: 3)
+Chore.create(user_id: 2, task_id: 1)
+Chore.create(user_id: 3, task_id: 2)
 Chore.create(user_id: 2, task_id: 3)
+Chore.create(user_id: 3, task_id: 3)
 
 Role.create(title: "Coordinator")
 Role.create(title: "Teacher")
