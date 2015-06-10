@@ -1,5 +1,15 @@
 development:
   adapter: postgresql
-  host: localhost
-  username: user
-  database: app-dev
+  encoding: unicode
+  database: roger
+  pool: 5
+  username: myapp
+  password: password1
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: roger
+  pool: 5
+  username: myapp
+  password: password1

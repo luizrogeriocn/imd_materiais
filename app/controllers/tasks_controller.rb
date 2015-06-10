@@ -6,9 +6,11 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     if current_user.roles.first.title.eql? "Coordinator"
-      @tasks = Task.all
+      @tasks = Task.all.where(status: 0)
+      @finished_tasks = Task.all.where(status: 1)
     else
-      @tasks = current_user.tasks
+      @tasks = current_user.tasks.where(status: 0)
+      @finished_tasks = current_user.tasks.where(status: 1)
     end
   end
 
