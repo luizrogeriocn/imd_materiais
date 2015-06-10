@@ -24,7 +24,6 @@ class MaterialsController < ApplicationController
   def edit
     @lessons = current_user.lessons
     @subjects = Subject.all
-    @material = Material.new
   end
 
   # POST /materials
@@ -75,6 +74,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:lesson_id, :description, :file)
+      params.require(:material).permit(:id, :lesson_id, :description, :file)
     end
 end

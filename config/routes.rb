@@ -6,27 +6,28 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :roles
+
+  resources :offers
+
+  resources :subjects
+  
   resources :users, except: :create do 
     collection do
       post 'create', as: 'create'
     end 
   end
 
-  resources :roles
-
-  resources :offers
-
-  resources :subjects
 
   devise_scope :user do
-      authenticated :user do
-        root 'tasks#index', as: :authenticated_root
-      end
-
-      unauthenticated do
-        root 'devise/sessions#new', as: :unauthenticated_root
-      end
+    authenticated :user do
+      root 'tasks#index', as: :authenticated_root
     end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
