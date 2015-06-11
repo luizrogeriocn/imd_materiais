@@ -15,10 +15,10 @@
       <table class="table">
         <thead>
             <tr>
-              <th>Lesson</th>
+              <th width="100">Lesson</th>
               <th>Description</th>
-              <th>File</th>
-              <th colspan="3"></th>
+              <th width="100">File</th>
+              <th width="120"></th>
             </tr>
           </thead>
 
@@ -29,7 +29,7 @@
                 <td><%= material.description %></td>
                 <td><%= link_to 'Download', material.file.url, download: true, class: 'btn btn-default btn-sm' %></td>
                 <td><%= link_to 'Show', material, class: 'btn btn-success btn-sm' %></td>
-                </td>
+                
               </tr>
             <% end %>
           </tbody>
@@ -45,10 +45,10 @@
       <table class="table">
         <thead>
             <tr>
-              <th>Lesson</th>
+              <th width="100">Lesson</th>
               <th>Description</th>
-              <th>File</th>
-              <th colspan="3"></th>
+              <th width="100">File</th>
+              <th width="120"></th>
             </tr>
           </thead>
 
@@ -57,10 +57,8 @@
               <tr>
                 <td><%= finished_material.lesson.lesson_number %></td>
                 <td><%= finished_material.description %></td>
-                <td><%= link_to 'Download', finished_material.file.url, download: true %></td>
-                <td><%= link_to 'Show', finished_material %></td>
-                <td><%= link_to 'Edit', edit_material_path(finished_material) %></td>
-                <td><%= link_to 'Destroy', finished_material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Download', finished_material.file.url, download: true, class: 'btn btn-default btn-sm' %></td>
+                <td><%= link_to 'Show', finished_material, class: 'btn btn-success btn-sm' %></td>
               </tr>
             <% end %>
           </tbody>
