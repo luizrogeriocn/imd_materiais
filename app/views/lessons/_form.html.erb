@@ -18,7 +18,7 @@
       <%= f.fields_for :lesson_users do |lesson_user| %>
         <%= render 'lesson_user_fields', :f => lesson_user %>
       <%end%>
-      <%= link_to_add_association 'add user', f, :lesson_users %>
+      <%= link_to_add_association 'add user', f, :lesson_users, class: 'btn btn-xs btn-info' %>
     </div>
   </div>
   <div class="field">
@@ -34,6 +34,6 @@
     <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create lesson', class: 'btn btn-lg btn-success' %>
   </div>
 <% end %>

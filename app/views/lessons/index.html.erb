@@ -15,7 +15,7 @@
       <table class="table">
         <thead>
             <tr>
-              <th>Lesson number</th>
+              <th>#</th>
               <th>Subject</th>
               <th>Offer</th>
               <th>Teacher</th>
@@ -31,9 +31,7 @@
               <td><%= lesson.offer.year_semester %>
               <td><%= lesson.users.first.nickname if  lesson.users.size> 0 %></td>
               <td><%= lesson.description %></td>
-              <td><%= link_to 'Show', lesson %></td>
-              <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-              <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Show', lesson, class: 'btn btn-sm btn-success' %></td>
             </tr>
             <% end %>
           </tbody>

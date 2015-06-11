@@ -9,11 +9,11 @@
 </div>
 <div class="row">
   <div class="panel panel-warning">
-    <div class="panel-heading">Tarefas pendentes</div>
+    <div class="panel-heading">Pendent tasks</div>
     <div class="panel-body">
       <table class="table">
         <tr>
-          <th>Tilte</th>
+          <th>Title</th>
           <th>Description</th>
           <th>Status</th>
           <th colspan="3">Actions</th>
@@ -24,9 +24,9 @@
           <td><%= task.tilte %></td>
           <td><%= task.description %></td>
           <td><%= task.status %></td>
-          <td><%= link_to 'Show', task %></td>
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', task, class: 'btn btn-success btn-sm' %></td>
+          <td><%= link_to 'Edit', edit_task_path(task), class: 'btn btn-warning btn-sm' %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         </tr>
         <% end %>
       </table>
@@ -35,11 +35,11 @@
 </div>
 <div class="row">
   <div class="panel panel-success">
-    <div class="panel-heading">Tarefas completas</div>
+    <div class="panel-heading">Completed tasks</div>
     <div class="panel-body">
       <table class="table">
         <tr>
-          <th>Tilte</th>
+          <th>Title</th>
           <th>Description</th>
           <th>Status</th>
           <th colspan="3">Actions</th>
@@ -50,9 +50,9 @@
           <td><%= finished_task.tilte %></td>
           <td><%= finished_task.description %></td>
           <td><%= finished_task.status %></td>
-          <td><%= link_to 'Show', finished_task %></td>
-          <td><%= link_to 'Edit', edit_task_path(finished_task) %></td>
-          <td><%= link_to 'Destroy', finished_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', finished_task, class: 'btn btn-success btn-sm' %></td>
+          <td><%= link_to 'Edit', edit_task_path(finished_task), class: 'btn btn-warning btn-sm' %></td>
+          <td><%= link_to 'Destroy', finished_task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         </tr>
         <% end %>
       </table>

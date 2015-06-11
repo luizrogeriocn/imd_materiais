@@ -11,5 +11,11 @@
   <%= @material.description %>
 </p>
 
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+<p>
+  <strong>Download:</strong>
+  <%= link_to 'Download', @material.file.url, download: true, class: 'btn btn-default btn-lg' %>
+</p>
+
+<%= link_to 'Edit', edit_material_path(@material), class: 'btn btn-warning' %>
+<%= link_to 'Back', materials_path, class: 'btn btn-info' %>
+<%= link_to 'Destroy', @material, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
