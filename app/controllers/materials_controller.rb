@@ -11,9 +11,6 @@ class MaterialsController < ApplicationController
       @finished_materials = Material.all.where(status: 1)
     else
       @lessons = current_user.lessons
-      p "##############################"
-      p @lessons
-      p "##############################"
 
       @materials = []
       @finished_materials = []
