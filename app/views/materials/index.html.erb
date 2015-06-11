@@ -17,10 +17,8 @@
       <tr>
         <td><%= material.lesson.lesson_number %></td>
         <td><%= material.description %></td>
-        <td><%= link_to 'Download', material.file.url, download: true %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Download', material.file.url, download: true, class: 'btn btn-default btn-sm' %></td>
+        <td><%= link_to 'Show', material, class: 'btn btn-success btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Material', new_material_path %>
+<%= link_to 'New Material', new_material_path, class: 'btn btn-primary' %>
