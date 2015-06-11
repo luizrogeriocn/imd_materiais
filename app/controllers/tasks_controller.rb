@@ -78,7 +78,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:tilte, :description,
+      params.require(:task).permit(:tilte, :description, :status,
         :chores_attributes => [:id, :user_id, :task_id, :_destroy])
     end
 end

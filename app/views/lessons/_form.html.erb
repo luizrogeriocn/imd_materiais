@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :lesson_number %><br>
-    <%= f.number_field :lesson_number %>
-  </div>
-  <div class="field">
     <%= f.label :subject_id %><br>
     <%= f.collection_select(:subject_id, Subject.all, :id, :title) %>
   </div>
   <div class="field">
     <%= f.label :offer_id %><br>
     <%= f.collection_select(:offer_id, Offer.all, :id, :year_semester) %>
+  </div>
+  <div class="field">
+    <%= f.label :lesson_number %><br>
+    <%= f.number_field :lesson_number %>
   </div>
   <div class="field">
     <%= f.label :description %><br>

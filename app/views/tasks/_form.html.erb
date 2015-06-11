@@ -21,10 +21,13 @@
       <%= link_to_add_association 'add user', f, :chores %>
     </div>
   </div>
-  
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :done %>
+    <%= f.check_box :status, {},"done", "open" %>
   </div>
   <div class="actions">
     <%= f.submit %>
