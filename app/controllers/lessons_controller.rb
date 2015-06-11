@@ -30,8 +30,8 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
-        format.json { render :show, status: :created, location: @lesson }
+        format.html { redirect_to lessons_url, notice: 'Lesson was successfully created.' }
+        format.json { render :show, status: :created, location: lessons_url }
       else
         format.html { render :new }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
@@ -44,8 +44,8 @@ class LessonsController < ApplicationController
   def update
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lesson }
+        format.html { redirect_to lessons_url, notice: 'Lesson was successfully updated.' }
+        format.json { render :show, status: :ok, location: lessons_url }
       else
         format.html { render :edit }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }

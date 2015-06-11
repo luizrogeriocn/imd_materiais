@@ -33,8 +33,8 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to @material, notice: 'Material was successfully created.' }
-        format.json { render :show, status: :created, location: @material }
+        format.html { redirect_to materials_url, notice: 'Material was successfully created.' }
+        format.json { render :show, status: :created, location: materials_url }
       else
         format.html { render :new }
         format.json { render json: @material.errors, status: :unprocessable_entity }
@@ -47,8 +47,8 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
-        format.json { render :show, status: :ok, location: @material }
+        format.html { redirect_to materials_url, notice: 'Material was successfully updated.' }
+        format.json { render :show, status: :ok, location: materials_url }
       else
         format.html { render :edit }
         format.json { render json: @material.errors, status: :unprocessable_entity }

@@ -1,3 +1,7 @@
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
 <div class="row">
   <div class="pull-right" role="group">
     <%= link_to 'New Material', new_material_path, class: "btn btn-success btn-lg active"  %>
