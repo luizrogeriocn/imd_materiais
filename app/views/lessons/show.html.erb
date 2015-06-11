@@ -20,5 +20,6 @@
   <%= @lesson.description %>
 </p>
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+<%= link_to 'Edit', edit_lesson_path(@lesson), class: 'btn btn-warning' %> 
+<%= link_to 'Back', lessons_path, class: 'btn btn-info' %> 
+<%= link_to 'Destroy', @lesson, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
