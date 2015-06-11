@@ -4,6 +4,8 @@ class Lesson < ActiveRecord::Base
 
   has_one :material
 
-  has_many :lesson_users
+  has_many :lesson_users, dependent: :destroy
   has_many :users, through: :lesson_users
+
+  accepts_nested_attributes_for :lesson_users
 end

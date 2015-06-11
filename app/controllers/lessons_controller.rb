@@ -1,10 +1,15 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all.includes(:subject, :offer)
+    if current_user.roles.first.title.eql? "Coordinator"
+      @lessons = Lesson.all.includes(:subject, :offer, :users)
+    else
+      @lessons = current_user.lessons.includes(:subject, :offer, :users)
+    end
   end
 
   # GET /lessons/1
@@ -17,6 +22,7 @@ class LessonsController < ApplicationController
   # GET /lessons/new
   def new
     @lesson = Lesson.new
+    @lesson.users.build
   end
 
   # GET /lessons/1/edit
@@ -71,6 +77,7 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:lesson_number, :subject_id, :offer_id, :description)
+      params.require(:lesson).permit(:lesson_number, :subject_id, :offer_id, :description,
+        :lesson_users_attributes => [:id, :user_id, :lesson_id, :_destroy])
     end
 end

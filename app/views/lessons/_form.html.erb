@@ -12,16 +12,22 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :lesson_number %><br>
+    <%= f.number_field :lesson_number %><br>
+    <div id="lesson_users">  
+      <%= f.fields_for :lesson_users do |lesson_user| %>
+        <%= render 'lesson_users_fields', :f => lesson_user %>
+      <%end%>
+      <%= link_to_add_association 'add user', f, :lesson_users %>
+    </div>
+  </div>
+  <div class="field">
     <%= f.label :subject_id %><br>
     <%= f.collection_select(:subject_id, Subject.all, :id, :title) %>
   </div>
   <div class="field">
     <%= f.label :offer_id %><br>
     <%= f.collection_select(:offer_id, Offer.all, :id, :year_semester) %>
-  </div>
-  <div class="field">
-    <%= f.label :lesson_number %><br>
-    <%= f.number_field :lesson_number %>
   </div>
   <div class="field">
     <%= f.label :description %><br>

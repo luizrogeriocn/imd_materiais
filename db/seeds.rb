@@ -7,7 +7,6 @@ Task.create(tilte: "Task2", description: "Task para prof 2", status: 0)
 Task.create(tilte: "Task3", description: "Task para prof 1 e 2", status: 0)
 Task.create(tilte: "Task4", description: "Task terminada para prof 1 e 2", status: 1)
 
-
 Chore.create(user_id: 2, task_id: 1)
 Chore.create(user_id: 3, task_id: 2)
 Chore.create(user_id: 2, task_id: 3)
@@ -32,3 +31,7 @@ Offer.create(year: 2015, semester: 2)
 Lesson.create(lesson_number: 1, subject_id: 1, offer_id: 1, description: "Aula 1 de Banco de Dados")
 Lesson.create(lesson_number: 1, subject_id: 2, offer_id: 2, description: "Aula 1 de Logica")
 Lesson.create(lesson_number: 1, subject_id: 3, offer_id: 1, description: "Aula 1 de Redacao")
+
+LessonUser.create(lesson_id: 1, user_id: 2)
+LessonUser.create(lesson_id: 2, user_id: 2)
+LessonUser.create(lesson_id: 3, user_id: 3)
