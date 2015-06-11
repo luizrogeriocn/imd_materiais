@@ -27,6 +27,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @task.status = params[:status]
+    @task.save
   end
 
   # POST /tasks
