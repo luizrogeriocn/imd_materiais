@@ -14,10 +14,12 @@
           
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Materials", materials_path %></li>
-            <li><%= link_to "Lessons", lessons_path %></li>
-          </ul>
+          <% if user_signed_in? %>
+            <ul class="nav navbar-nav">
+              <li><%= link_to "Materials", materials_path %></li>
+              <li><%= link_to "Lessons", lessons_path %></li>
+            </ul>
+          <% end %>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -32,9 +34,9 @@
                 <li><a href="#">Configurações</a></li>
                 <li>
                   <% if user_signed_in? %>
-                  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+                    <%= link_to "Sair", destroy_user_session_path, method: :delete %>
                   <% else %>
-                  <li><%= link_to "Entrar", new_user_session_path %></li>
+                    <li><%= link_to "Entrar", new_user_session_path %></li>
                   <% end %>
                 </li>
                 <li class="divider"></li>
