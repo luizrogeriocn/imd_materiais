@@ -5,7 +5,28 @@ class MaterialsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Material.all
+    #@materials = Material.all
+    unless current_user.roles.first.title.eql? "Teacher"
+      @materials = Material.all.where(status: 0)
+      @finished_materials = Material.all.where(status: 1)
+    else
+      @lessons = current_user.lessons
+      p "##############################"
+      p @lessons
+      p "##############################"
+
+      @materials = []
+      @finished_materials = []
+
+      @lessons.each do |lesson|
+        if lesson.material && lesson.material.status == "finished"
+          p lesson.material
+          @finished_materials << lesson.material
+        elsif lesson.material && lesson.material.status == "unfinished"
+          @materials << lesson.material
+        end
+      end
+    end
   end
 
   # GET /materials/1
@@ -74,7 +95,7 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:id, :lesson_id, :description, :file,
+      params.require(:material).permit(:id, :lesson_id, :description, :file, :status,
         lesson_parameters: [:id, :lesson_number, :subject_id, :offer_id])
     end
 end

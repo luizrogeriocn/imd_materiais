@@ -5,7 +5,7 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    if current_user.roles.first.title.eql? "Coordinator"
+    unless current_user.roles.first.title.eql? "Teacher"
       @lessons = Lesson.all.includes(:subject, :offer, :users)
     else
       @lessons = current_user.lessons.includes(:subject, :offer, :users)

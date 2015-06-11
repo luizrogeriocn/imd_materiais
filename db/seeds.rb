@@ -1,6 +1,7 @@
 User.create(email: "coordinator@example.com", password: "rootadmin", nickname: "coordinator")
 User.create(email: "teacher1@example.com", password: "rootadmin", nickname: "teacher1")
 User.create(email: "teacher2@example.com", password: "rootadmin", nickname: "teacher2")
+User.create(email: "reviewer1@example.com", password: "rootadmin", nickname: "reviewer1")
 
 Task.create(tilte: "Task1", description: "Task para prof 1", status: 0)
 Task.create(tilte: "Task2", description: "Task para prof 2", status: 0)
@@ -16,10 +17,12 @@ Chore.create(user_id: 3, task_id: 4)
 
 Role.create(title: "Coordinator")
 Role.create(title: "Teacher")
+Role.create(title: "Reviewer")
 
 Assignment.create(user_id: 1, role_id: 1)
 Assignment.create(user_id: 2, role_id: 2)
 Assignment.create(user_id: 3, role_id: 2)
+Assignment.create(user_id: 4, role_id: 3)
 
 Subject.create(title: "Banco de Dados")
 Subject.create(title: "Logica")

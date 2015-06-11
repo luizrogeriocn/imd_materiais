@@ -16,7 +16,7 @@
     <%= f.number_field :lesson_number %><br>
     <div id="lesson_users">  
       <%= f.fields_for :lesson_users do |lesson_user| %>
-        <%= render 'lesson_users_fields', :f => lesson_user %>
+        <%= render 'lesson_user_fields', :f => lesson_user %>
       <%end%>
       <%= link_to_add_association 'add user', f, :lesson_users %>
     </div>

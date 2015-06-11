@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-  <div class="panel panel-success">
+  <div class="panel panel-warning">
     <div class="panel-heading">Materiais</div>
     <div class="panel-body">
       <table class="table">
@@ -37,4 +37,35 @@
       </table>
     </div>
   </div>
-</div
+</div>
+
+<div class="row">
+  <div class="panel panel-success">
+    <div class="panel-heading">Materiais</div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+            <tr>
+              <th>Lesson</th>
+              <th>Description</th>
+              <th>File</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @finished_materials.each do |finished_material| %>
+              <tr>
+                <td><%= finished_material.lesson.lesson_number %></td>
+                <td><%= finished_material.description %></td>
+                <td><%= link_to 'Download', finished_material.file.url, download: true %></td>
+                <td><%= link_to 'Show', finished_material %></td>
+                <td><%= link_to 'Edit', edit_material_path(finished_material) %></td>
+                <td><%= link_to 'Destroy', finished_material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610211554) do
+ActiveRecord::Schema.define(version: 20150611150025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 20150610211554) do
     t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "material_id"
   end
 
+  add_index "lessons", ["material_id"], name: "index_lessons_on_material_id", using: :btree
   add_index "lessons", ["offer_id"], name: "index_lessons_on_offer_id", using: :btree
   add_index "lessons", ["subject_id"], name: "index_lessons_on_subject_id", using: :btree
 
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(version: 20150610211554) do
   add_foreign_key "chores", "users"
   add_foreign_key "lesson_users", "lessons"
   add_foreign_key "lesson_users", "users"
+  add_foreign_key "lessons", "materials"
   add_foreign_key "lessons", "offers"
   add_foreign_key "lessons", "subjects"
   add_foreign_key "materials", "lessons"
