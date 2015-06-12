@@ -29,7 +29,7 @@ class MaterialsController < ApplicationController
   # GET /materials/1
   # GET /materials/1.json
   def show
-    @comments = @material.comments
+    @comments = @material.comments.includes(:user)
     @comment = @material.comments.build
   end
 
