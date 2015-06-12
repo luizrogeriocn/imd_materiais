@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   resources :materials
 
   resources :lessons
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   resources :offers
 
   resources :subjects
+
+  post '/comments', to: 'comments#create', as: 'create_comment'
   
   resources :users, except: :create do 
     collection do

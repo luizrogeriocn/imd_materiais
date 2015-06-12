@@ -18,6 +18,7 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @comments = @task.comments
+    @comment = @task.comments.build
   end
 
   # GET /tasks/new
@@ -29,8 +30,10 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task.status = params[:status]
-    @task.save
+    unless params[:status].nil?
+      @task.status = params[:status]
+      @task.save
+    end
   end
 
   # POST /tasks
@@ -84,6 +87,6 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:tilte, :description, :status,
         :chores_attributes => [:id, :user_id, :task_id, :_destroy],
-        :comments_attributes => [:id, :content, :commentable_id, :commentable_type]) 
+        :comments_attributes => [:id, :content, :commentable_id, :commentable_type, :_destroy]) 
     end
 end
