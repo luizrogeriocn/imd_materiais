@@ -11,11 +11,26 @@
   <%= @material.description %>
 </p>
 
-<p>
-  <strong>Download:</strong>
-  <%= link_to 'Download', @material.file.url, download: true, class: 'btn btn-default btn-lg' %>
-</p>
+<div class="btn-group">  
+  <%= link_to 'Back', materials_path, class: 'btn btn-info btn-xs' %>
+  <%= link_to 'Download', @material.file.url, download: true, class: 'btn btn-primary btn-xs' %>
+  <%= link_to 'Edit', edit_material_path(@material), class: 'btn btn-warning btn-xs' %>
+</div>
+<br>
 
-<%= link_to 'Edit', edit_material_path(@material), class: 'btn btn-warning' %>
-<%= link_to 'Back', materials_path, class: 'btn btn-info' %>
-<%= link_to 'Destroy', @material, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<div class="container thumbnail col-xs-5">  
+  <%= form_for(@comment, url: create_comment_path) do |f| %>
+    content: <%= f.text_field :content %>
+    <%= f.hidden_field(:commentable_id, :value => @material.id) %>
+    <%= f.hidden_field(:commentable_type, :value => "Material")%>
+    <%= f.submit "Send comment" %>
+  <% end %>
+
+  <% @comments.each do |task| %>
+    <div class="task row" data-task-id="<%= task.id %>">
+      <div class="col-xs-3">
+        <%= task.content %>
+      </div>
+    </div>
+  <% end %>
+</div>

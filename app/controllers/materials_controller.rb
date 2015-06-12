@@ -29,6 +29,8 @@ class MaterialsController < ApplicationController
   # GET /materials/1
   # GET /materials/1.json
   def show
+    @comments = @material.comments
+    @comment = @material.comments.build
   end
 
   # GET /materials/new
