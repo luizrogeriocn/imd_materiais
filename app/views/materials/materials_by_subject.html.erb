@@ -1,0 +1,11 @@
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<% @subjects.each do |s| %>
+<hr>
+  <h3><%= link_to s.title, s%></h3>
+  <hr>
+  <% s.materials.each do |m| %>
+  <%= link_to m.description, m%><br>
+  <% end%>
+<%end%>

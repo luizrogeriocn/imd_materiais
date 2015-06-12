@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   post '/comments', to: 'comments#create', as: 'create_comment'
   get '/open_materials', to: 'materials#open_materials', as: 'open_materials'
+  get '/materials_by_subject', to: 'materials#materials_by_subject', as: 'materials_by_subject'
   
   resources :users, except: :create do 
     collection do
