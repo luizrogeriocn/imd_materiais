@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @comments = @task.comments
+    @comments = @task.comments.includes(:user)
     @comment = @task.comments.build
   end
 

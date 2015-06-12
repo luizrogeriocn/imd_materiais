@@ -23,12 +23,14 @@
     content: <%= f.text_field :content %>
     <%= f.hidden_field(:commentable_id, :value => @material.id) %>
     <%= f.hidden_field(:commentable_type, :value => "Material")%>
+    <%= f.hidden_field(:user_id, :value => current_user.id)%>
     <%= f.submit "Send comment" %>
   <% end %>
 
   <% @comments.each do |task| %>
     <div class="task row" data-task-id="<%= task.id %>">
-      <div class="col-xs-3">
+      <div class="col-xs-9">
+        <strong><%= task.user.nickname %>:</strong>
         <%= task.content %>
       </div>
     </div>
