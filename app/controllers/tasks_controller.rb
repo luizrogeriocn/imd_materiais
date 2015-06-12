@@ -17,12 +17,14 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @comments = @task.comments
   end
 
   # GET /tasks/new
   def new
     @task = Task.new
     @task.chores.build
+    @task.comments.build
   end
 
   # GET /tasks/1/edit
@@ -81,6 +83,7 @@ class TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:tilte, :description, :status,
-        :chores_attributes => [:id, :user_id, :task_id, :_destroy])
+        :chores_attributes => [:id, :user_id, :task_id, :_destroy],
+        :comments_attributes => [:id, :content, :commentable_id, :commentable_type]) 
     end
 end

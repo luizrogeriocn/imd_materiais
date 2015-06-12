@@ -4,5 +4,8 @@ class Task < ActiveRecord::Base
 
   enum status: { open: 0, done: 1 }
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
   accepts_nested_attributes_for :chores
+  accepts_nested_attributes_for :comments
 end

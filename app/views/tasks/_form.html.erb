@@ -20,6 +20,12 @@
       <%end%>
       <%= link_to_add_association 'add user', f, :chores, class: 'btn btn-xs btn-info' %>
     </div>
+    <div id="comments">  
+      <%= f.fields_for :comments do |comment| %>
+        <%= render 'comment_fields', :f => comment %>
+      <%end%>
+      <%= link_to_add_association 'add comment', f, :comments, class: 'btn btn-xs btn-info' %>
+    </div>
   </div>
   <div class="field">
     <%= f.label :description %><br>

@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611150025) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150612023202) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,8 +20,8 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id", using: :btree
-  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
+  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
 
   create_table "change_logs", force: :cascade do |t|
     t.integer  "task_id"
@@ -33,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "change_logs", ["task_id"], name: "index_change_logs_on_task_id", using: :btree
+  add_index "change_logs", ["task_id"], name: "index_change_logs_on_task_id"
 
   create_table "chores", force: :cascade do |t|
     t.integer  "user_id"
@@ -42,8 +39,19 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "chores", ["task_id"], name: "index_chores_on_task_id", using: :btree
-  add_index "chores", ["user_id"], name: "index_chores_on_user_id", using: :btree
+  add_index "chores", ["task_id"], name: "index_chores_on_task_id"
+  add_index "chores", ["user_id"], name: "index_chores_on_user_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["content"], name: "index_comments_on_content"
 
   create_table "lesson_users", force: :cascade do |t|
     t.integer  "lesson_id"
@@ -52,8 +60,8 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "lesson_users", ["lesson_id"], name: "index_lesson_users_on_lesson_id", using: :btree
-  add_index "lesson_users", ["user_id"], name: "index_lesson_users_on_user_id", using: :btree
+  add_index "lesson_users", ["lesson_id"], name: "index_lesson_users_on_lesson_id"
+  add_index "lesson_users", ["user_id"], name: "index_lesson_users_on_user_id"
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "lesson_number"
@@ -62,12 +70,10 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "material_id"
   end
 
-  add_index "lessons", ["material_id"], name: "index_lessons_on_material_id", using: :btree
-  add_index "lessons", ["offer_id"], name: "index_lessons_on_offer_id", using: :btree
-  add_index "lessons", ["subject_id"], name: "index_lessons_on_subject_id", using: :btree
+  add_index "lessons", ["offer_id"], name: "index_lessons_on_offer_id"
+  add_index "lessons", ["subject_id"], name: "index_lessons_on_subject_id"
 
   create_table "materials", force: :cascade do |t|
     t.integer  "lesson_id"
@@ -78,7 +84,7 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.integer  "status",      default: 0
   end
 
-  add_index "materials", ["lesson_id"], name: "index_materials_on_lesson_id", using: :btree
+  add_index "materials", ["lesson_id"], name: "index_materials_on_lesson_id"
 
   create_table "offers", force: :cascade do |t|
     t.integer  "year"
@@ -123,18 +129,7 @@ ActiveRecord::Schema.define(version: 20150611150025) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  add_foreign_key "assignments", "roles"
-  add_foreign_key "assignments", "users"
-  add_foreign_key "change_logs", "tasks"
-  add_foreign_key "chores", "tasks"
-  add_foreign_key "chores", "users"
-  add_foreign_key "lesson_users", "lessons"
-  add_foreign_key "lesson_users", "users"
-  add_foreign_key "lessons", "materials"
-  add_foreign_key "lessons", "offers"
-  add_foreign_key "lessons", "subjects"
-  add_foreign_key "materials", "lessons"
 end
