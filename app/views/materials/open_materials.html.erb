@@ -1,0 +1,71 @@
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<%= form_tag("/open_materials", method: "get") do %>
+  <%= label_tag(:year, "Ano:") %>
+  <%= text_field_tag(:year, @year) %>
+  <%= label_tag(:semester, "Semestre:") %>
+  <%= text_field_tag(:semester, @semester) %>
+  <%= submit_tag("Buscar") %>
+<% end %>
+<br>
+
+<div class="row">
+  <div class="panel panel-warning">
+    <div class="panel-heading">Materiais incompletos</div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+            <tr>
+              <th width="100">Lesson</th>
+              <th>Description</th>
+              <th width="100">File</th>
+              <th width="120"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @materials.each do |material| %>
+              <tr>
+                <td><%= material.lesson.lesson_number %></td>
+                <td><%= material.description %></td>
+                <td><%= link_to 'Download', material.file.url, download: true, class: 'btn btn-default btn-sm' %></td>
+                <td><%= link_to 'Show', material, class: 'btn btn-success btn-sm' %></td>
+                
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel panel-success">
+    <div class="panel-heading">Materiais completos</div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+            <tr>
+              <th width="100">Lesson</th>
+              <th>Description</th>
+              <th width="100">File</th>
+              <th width="120"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @finished_materials.each do |finished_material| %>
+              <tr>
+                <td><%= finished_material.lesson.lesson_number %></td>
+                <td><%= finished_material.description %></td>
+                <td><%= link_to 'Download', finished_material.file.url, download: true, class: 'btn btn-default btn-sm' %></td>
+                <td><%= link_to 'Show', finished_material, class: 'btn btn-success btn-sm' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

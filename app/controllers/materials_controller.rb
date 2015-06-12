@@ -26,6 +26,13 @@ class MaterialsController < ApplicationController
     end
   end
 
+  def open_materials
+    @year = params[:year] || 2015
+    @semester = params[:semester] || 1
+    @finished_materials = Offer.where(semester: @semester, year: @year).joins(:materials).includes(:materials).where(:'materials.status' =>1).flat_map(&:materials)
+    @materials = Offer.where(semester: @semester, year: @year).joins(:materials).includes(:materials).where(:'materials.status' => 0).flat_map(&:materials)
+  end
+
   # GET /materials/1
   # GET /materials/1.json
   def show

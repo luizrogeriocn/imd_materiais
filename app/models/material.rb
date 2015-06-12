@@ -3,6 +3,7 @@ class Material < ActiveRecord::Base
 
   mount_uploader :file, MaterialFileUploader
 
+  has_one :offer, through: :lesson
   has_many :comments, as: :commentable, dependent: :destroy
 
   enum status: { unfinished: 0, finished: 1 }
